@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cookiecutter.app_name }}</title>
+</head>
+<body>
+    <header>
+        <h1>{{ cookiecutter.app_name }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Main User Benefit</h2>
+            <p>What the user wishes to accomplish.</p>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <h3>Feature 1</h3>
+                <p>Benefit of feature 1.</p>
+            </div>
+            <div class="feature">
+                <h3>Feature 2</h3>
+                <p>Benefit of feature 2.</p>
+            </div>
+            <div class="feature">
+                <h3>Feature 3</h3>
+                <p>Benefit of feature 3.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; {% now "Y" %} {{ cookiecutter.app_name }}. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
