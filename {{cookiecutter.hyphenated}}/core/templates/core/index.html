@@ -10,7 +10,9 @@
         <h1>{{ cookiecutter.app_name }}</h1>
         <nav>
             <ul>
+                {% raw %}
                 <li><a href="{% url 'index' %}">Home</a></li>
+                {% endraw %}
                 <!-- Add more navigation links as needed -->
             </ul>
         </nav>
@@ -39,7 +41,9 @@
     </main>
 
     <footer>
+        {% raw %}
         <p>&copy; {% now "Y" %} {{ cookiecutter.app_name }}. All rights reserved.</p>
+        {% endraw %}
     </footer>
 
 </body>
