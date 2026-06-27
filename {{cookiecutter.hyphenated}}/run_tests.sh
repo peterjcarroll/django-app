@@ -1,7 +1,7 @@
 #!/bin/bash
-# Run Django management commands locally against the Docker database.
+# Run Django tests locally against the Docker database.
 
-# start the database container
+# start the database container if not already running
 docker compose up -d db
 
 # set the environment variables from .env file
@@ -12,5 +12,4 @@ set +a
 # override the database host to localhost
 export POSTGRES_HOST=localhost
 
-# pass the arguments to the manage.py script
-uv run manage.py "$@"
+uv run manage.py test "$@"

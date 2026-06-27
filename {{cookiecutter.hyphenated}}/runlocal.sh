@@ -1,11 +1,18 @@
 #!/bin/bash
 # This script runs the app locally while still using Docker for the database.
 
+# install pre-commit hooks if not already installed
+if [ ! -f ".git/hooks/pre-commit" ]; then
+    uv run pre-commit install
+fi
+
 # start the database container
 docker compose up -d db
 
 # set the environment variables from .env file
-export $(grep -v '^#' .env | xargs)
+set -a
+source .env
+set +a
 
 # override the database host to localhost
 export POSTGRES_HOST=localhost

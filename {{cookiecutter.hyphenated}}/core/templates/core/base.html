@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% raw %}{% block title %}{% endraw %}{{ cookiecutter.app_name }}{% raw %}{% endblock %}{% endraw %}
+    </title>
+    {% raw %}{% load static %}{% endraw %}
+
+    <!-- BeerCSS (self-hosted, CDN fallback) -->
+    <link
+      rel="stylesheet"
+      href="{% raw %}{% static 'vendor/beer.min.css' %}{% endraw %}"
+      onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/beercss@3.11.11/dist/cdn/beer.min.css'"
+    />
+    <script
+      type="module"
+      src="{% raw %}{% static 'vendor/beer.min.js' %}{% endraw %}"
+      onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/beercss@3.11.11/dist/cdn/beer.min.js'"
+    ></script>
+
+    <!-- htmx (self-hosted, CDN fallback) -->
+    <script
+      src="{% raw %}{% static 'vendor/htmx.min.js' %}{% endraw %}"
+      onerror="this.onerror=null;this.src='https://unpkg.com/htmx.org@2.0.4'"
+    ></script>
+
+    <!-- Alpine.js (self-hosted, CDN fallback) -->
+    <script
+      defer
+      src="{% raw %}{% static 'vendor/alpine.min.js' %}{% endraw %}"
+      onerror="this.onerror=null;this.src='https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js'"
+    ></script>
+
+    {% raw %}{% block extra_head %}{% endblock %}{% endraw %}
+  </head>
+  <body>
+    <nav class="top">
+      <h6 class="max">{{ cookiecutter.app_name }}</h6>
+      {% raw %}
+      <div class="right l">
+        <a href="{% url 'core:index' %}" class="horizontal-padding">
+          <i>home</i>
+          <span>Home</span>
+        </a>
+      </div>
+      {% endraw %}
+    </nav>
+
+    <main class="responsive">
+      {% raw %}{% block content %}{% endblock %}{% endraw %}
+    </main>
+
+    {% raw %}{% block extra_js %}{% endblock %}{% endraw %}
+  </body>
+</html>

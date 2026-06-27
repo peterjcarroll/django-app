@@ -1,6 +1,7 @@
 {
     "app_name": "",
     "description": "",
+    "github_username": "",
     "hyphenated": "{{ '-'.join(cookiecutter['app_name'].lower().split()).replace('_', '-') }}",
     "underscored": "{{ cookiecutter.hyphenated.replace('-', '_') }}",
     "author_name": ""

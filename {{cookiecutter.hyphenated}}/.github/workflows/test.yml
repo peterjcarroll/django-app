@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Install Python 3.13
+        run: uv python install 3.13
+
+      - name: Sync dependencies
+        run: uv sync --locked
+
+      - name: Prepare environment file
+        run: |
+          cp env.example .env
+          sed -i 's/POSTGRES_PASSWORD=.*/POSTGRES_PASSWORD=testpass/' .env
+          sed -i 's/DJANGO_SECRET_KEY=.*/DJANGO_SECRET_KEY=testsecret/' .env
+          sed -i 's/{{cookiecutter.underscored | upper}}_DEBUG=False/{{cookiecutter.underscored | upper}}_DEBUG=True/' .env
+
+      - name: Run tests
+        run: ./run_tests.sh
