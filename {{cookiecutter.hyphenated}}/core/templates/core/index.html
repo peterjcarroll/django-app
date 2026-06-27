@@ -1,10 +1,14 @@
 {% raw %}{% extends 'core/base.html' %}
+{% load partials %}
 
 {% block title %}{% endraw %}{{ cookiecutter.app_name }}{% raw %}{% endblock %}
 
 {% block content %}
+  {% partial main-content %}
+{% endblock %}
+
+{% partialdef main-content %}
 <section class="padding">
   <h4>Welcome to {% endraw %}{{ cookiecutter.app_name }}{% raw %}</h4>
-  <p>{% endraw %}{{ cookiecutter.description }}{% raw %}</p>
 </section>
-{% endblock %}{% endraw %}
+{% endpartialdef %}{% endraw %}
