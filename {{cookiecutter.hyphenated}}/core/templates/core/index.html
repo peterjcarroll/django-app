@@ -1,10 +1,10 @@
 {% raw %}{% extends 'core/base.html' %}
 
-{% block title %}{{ cookiecutter.app_name }}{% endblock %}
+{% block title %}{% endraw %}{{ cookiecutter.app_name }}{% raw %}{% endblock %}
 
 {% block content %}
 <section class="padding">
   <h4>Welcome to {% endraw %}{{ cookiecutter.app_name }}{% raw %}</h4>
-  <p>{{ cookiecutter.description }}</p>
+  <p>{% endraw %}{{ cookiecutter.description }}{% raw %}</p>
 </section>
 {% endblock %}{% endraw %}
