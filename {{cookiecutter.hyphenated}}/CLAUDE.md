@@ -37,7 +37,8 @@ Starts the Docker database if needed and runs Django tests.
 Runs any Django management command against the local database.
 
 ### Docker
-- `docker-start.sh` is the production entrypoint (uvicorn by default)
+- `docker-start.sh` is the production entrypoint (granian ASGI server by default)
+- `Caddyfile` configures a Caddy reverse proxy: serves `/static/*` from disk, proxies everything else to the app on port 8000
 - `docker-compose.yml` is for **local development only**
 - Production docker-compose is maintained separately
 
