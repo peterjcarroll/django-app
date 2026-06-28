@@ -54,7 +54,9 @@ def title_for_asgi(server_hint: str | None = None) -> str:
     hint = server_hint
     if not hint:
         exe = Path(sys.argv[0]).name.lower()
-        if "uvicorn" in exe:
+        if "granian" in exe:
+            hint = "granian"
+        elif "uvicorn" in exe:
             hint = "uvicorn"
         elif "daphne" in exe:
             hint = "daphne"
