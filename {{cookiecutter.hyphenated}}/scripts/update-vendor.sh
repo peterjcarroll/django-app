@@ -7,9 +7,9 @@ set -e
 VENDOR_DIR="$(dirname "$0")/../static/vendor"
 mkdir -p "$VENDOR_DIR"
 
-BEERCSS_VERSION="3.11.11"
-HTMX_VERSION="2.0.4"
-ALPINE_VERSION="3.14.9"
+BEERCSS_VERSION="4.0.21"
+HTMX_VERSION="2.0.10"
+ALPINE_VERSION="3.15.12"
 
 echo "Downloading BeerCSS ${BEERCSS_VERSION}..."
 curl -fsSL "https://cdn.jsdelivr.net/npm/beercss@${BEERCSS_VERSION}/dist/cdn/beer.min.css" -o "${VENDOR_DIR}/beer.min.css"
