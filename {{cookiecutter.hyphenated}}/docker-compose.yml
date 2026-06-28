@@ -13,17 +13,40 @@ services:
       timeout: 5s
       retries: 5
 
+  collectstatic:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - staticfiles:/app/staticfiles
+    command: ["collectstatic"]
+    depends_on:
+      db:
+        condition: service_healthy
+
   web:
     build: .
     env_file:
       - .env
     volumes:
       - .:/app
-    ports:
-      - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
+      collectstatic:
+        condition: service_completed_successfully
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "8888:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - staticfiles:/srv/static:ro
+    depends_on:
+      - web
 
 volumes:
   postgres_data:
+  staticfiles:

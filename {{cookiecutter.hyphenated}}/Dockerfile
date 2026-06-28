@@ -25,17 +25,10 @@ COPY pyproject.toml /app/
 COPY uv.lock /app/
 RUN uv sync --locked --no-dev
 
-COPY docker-start.sh /app/
-COPY manage.py /app/
-COPY {{cookiecutter.underscored}} /app/{{cookiecutter.underscored}}
-COPY core /app/core
-COPY uilib /app/uilib
-COPY static /app/static
+COPY . /app/
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-
-RUN uv run manage.py collectstatic --noinput
 
 EXPOSE 8000
 
