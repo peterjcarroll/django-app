@@ -3,9 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 
-
-def is_htmx(request: HttpRequest) -> bool:
-    return bool(request.headers.get("Hx-Request"))
+from .htmx import is_htmx
 
 
 def index(request: HttpRequest):
